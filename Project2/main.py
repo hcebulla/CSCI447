@@ -1,6 +1,7 @@
 import numpy
 import csv
 import random
+import math 
 
 forestfires = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/forestfires.csv')
 glass = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/glass.csv')
@@ -29,6 +30,13 @@ def splitData(filename, split, trainingSet=[], testSet=[]):
 			else:
 				testSet.append(dataset[i])
 
+#calculate the euclidean distance between two points
+def euclideanDistance(P1, P2, length):
+	dist = 0
+	for i in range(length):
+		dist += np.linalg.norm(P1[i] - P2[i])
+	return math.sqrt(dist)
+
 process(forestfires)
 process(glass)
 process(abalone)
@@ -43,3 +51,5 @@ splitData(forestfires, 10, trainingSet, testSet)
 print(repr(len(trainingSet)))
 print(repr(len(testSet)))
 
+euclideanDistance(testSet, testSet, 2)
+print(repr(dist))
