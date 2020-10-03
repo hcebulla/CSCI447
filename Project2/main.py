@@ -2,6 +2,8 @@ import numpy as np
 import csv
 import random
 import math 
+import operator
+
 
 forestfires = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/forestfires.csv')
 glass = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/glass.csv')
@@ -48,7 +50,7 @@ def knn(trainingSet, testSet, k):
 	distances.sort(key=operator.itemgetter(1))
 	neighbors = []
 	for i in range(k):
-		neighbors.append(distances[i][0])
+		neighbors.append(distances[i][1])
 	return neighbors
 
 	
@@ -71,3 +73,7 @@ print(repr(testSet))
 
 #process(forestfires)
 print(repr(euclideanDistance(testSet, testSet, len(trainingSet))))
+
+#test KNN
+neighbors = knn(trainingSet, testSet, 1)
+print(neighbors)
