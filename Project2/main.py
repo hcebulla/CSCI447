@@ -23,9 +23,9 @@ def splitData(filename, split, trainingSet=[], testSet=[]):
 		lines = csv.reader(csvfile)
 		dataset = list(lines)
 		for i in range(len(dataset) - 1):
-			#for j in range(4):
-				#dataset[i][j] = dataset[i][j]
-			if random.random <= split:
+			for j in range(4):
+				dataset[i][j] = dataset[i][j]
+			if random.random == split:
 				trainingSet.append(dataset[i])
 			else:
 				testSet.append(dataset[i])
@@ -36,6 +36,22 @@ def euclideanDistance(P1, P2, length):
 	for i in range(length):
 		dist += np.square(P1[i] - P2[i])
 	return np.sqrt(dist)
+
+def knn(trainingSet, testSet, k):
+	distances = []
+	sort = []
+
+	length = len(testSet)-1
+	for i in range(len(trainingSet)):
+		dist = euclideanDistance(testSet, trainingSet[i], length)
+		distances.append((trainingSet[i], dist))
+	distances.sort(key=operator.itemgetter(1))
+	neighbors = []
+	for i in range(k):
+		neighbors.append(distances[i][0])
+	return neighbors
+
+	
 
 """
 process(forestfires)
