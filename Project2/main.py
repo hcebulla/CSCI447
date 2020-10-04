@@ -5,23 +5,23 @@ import math
 import operator
 
 
-forestfires = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/forestfires.csv')
-glass = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/glass.csv')
-abalone = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/abalone.csv')
-machine = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/machine.csv')
-vote = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/vote.csv')
-segmentation = open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/segmentation.csv')
+forestfires = open('data/forestfires.csv')
+glass = open('data/glass.csv')
+abalone = open('data/abalone.csv')
+machine = open('data/machine.csv')
+vote = open('data/vote.csv')
+segmentation = open('data/segmentation.csv')
 
 #preprocess data set
 def process(filename):
-	with open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/forestfires.csv', 'r') as csvfile:
+	with open('data/forestfires.csv', 'r') as csvfile:
 		lines = csv.reader(csvfile)
 		for row in lines:
 			print(', '.join(row))
 
 #randomly split data into training and test sets
 def splitData(filename, split, trainingSet=[], testSet=[]):
-	with open('/Users/hannahcebulla/Desktop/CSCI447/CSCI447/Project2/forestfires.csv', 'r') as csvfile:
+	with open('data/forestfires.csv', 'r') as csvfile:
 		lines = csv.reader(csvfile)
 		dataset = list(lines)
 		for i in range(len(dataset) - 1):
